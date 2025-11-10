@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OnigiRich</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css" integrity="sha512-yT6O0i+GCMN3AoLYrXtV2zBbP+ZwJqtNiA3BFwMQNKqFsvVvT4jP7fgEv2kM6sZ2GjbiUt1Ilb1Vql6uB3vnZQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(249, 1, 1, 0.05);
+      padding: 15px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo span {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #22c55e;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background-color: #333;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: white;
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        display: none;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+      }
+
+      .nav-links.active {
+  display: flex;
+}
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .section {
+      text-align: center;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .main-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #f50909;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #333;
+      margin-bottom: 2rem;
+    }
+
+.cta-button {
+  background-color: #28c748;
+  color: white;
+  font-weight: bold;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards 0.3s;
+  text-decoration: none; /* Hilangkan underline */
+
+}
+
+.cta-button:hover {
+  
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(40, 199, 111, 0.3);
+}
+
+
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+    .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1 1 500px;
+      text-align: left;
+    }
+
+    .hero-image {
+      flex: 1 1 500px;
+      display: flex;
+      justify-content: right;
+      align-items: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+
+    #menu {
+      background: #fafafa;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .section-description {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 50px auto;
+      color: #555;
+      text-align: center;
+      padding: 0 24px; /* atau 1.5rem */
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 16px;
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+
+    .product-price {
+      color: #27ae60;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    .section-text {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1rem;
+      color: #444;
+      padding: 40px;
+    }
+
+    .kontak-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 60px 40px;
+      background-color: #f9f9f9;
+      gap: 40px;
+    }
+
+    .kontak-col {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+    }
+
+    .kontak-col h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .kontak-col p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    .wa-button {
+      display: inline-block;
+      padding: 10px 16px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .kontak-section {
+        flex-direction: column;
+        padding: 40px 20px;
+      }
+      .menu-section {
+        padding: 0 64px;
+      }
+      .kontak-col h2 {
+        font-size: 1.8rem;
+      }
+
+      .kontak-col p {
+        font-size: 1rem;
+      }
+
+      .wa-button {
+        font-size: 1rem;
+        padding: 12px 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <img src="image/Logo.png" alt="Logo" />
+        <span>OnigiRich</span>
+      </div>
+
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="fullpage">
+    
+    <!-- HOME -->
+    <div class="section" id="home" style="background-color: #fbfbfb;">
+      <div class="hero-container">
+        <div class="hero-text">
+          <h2 class="main-title">Onigiri Rasa Nusantara</h2>
+          <p class="subtitle">
+            Onigiri Rasa Nusantara Satu Gigit, Jelajah Indonesia! Perpaduan cita rasa otentik Nusantara dalam balutan onigiri yang praktis, lezat, dan bikin kangen rumah.
+          </p>
+          <a class="cta-button" href="https://wa.me/6287836880545?text=Halo%20saya%20ingin%20pesan%20OnigiRich">
+            Coba Sekarang, Nikmati Sensasinya!
+          </a>
+        </div>
+        <div class="hero-image">
+          <img src="image/Logo.png" alt="Onigiri" />
+        </div>
+      </div>
+    </div>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&family=Viaoda+Libre&display=swap" rel="stylesheet">
+  <style>
+
+
+    .slider-container {
+      overflow: hidden;
+      background: #ffffff;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      white-space: nowrap;
+    }
+
+    .slider-track {
+      display: inline-block;
+      animation: scroll 30s linear infinite;
+    }
+
+    .slide-item {
+      display: inline-flex;
+      font-family:'Pinyon Script', cursive;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 3rem;
+      font-size: 1.5rem;
+      color: #444;
+    }
+
+    .slide-item i {
+      font-style: 'Pinyon Script', cursive;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+
+</body>
+</html>
+
+
+    <!-- MENU -->
+    <div class="section" id="menu" style="background-color: #fbfbfb;">
+      <div class="container">
+        <h2 class="section-title">Menu Kami</h2>
+        <p class="section-description">
+          Nikmati berbagai pilihan onigiri dengan cita rasa khas Nusantara, dibuat dengan bahan berkualitas dan resep autentik.
+        </p>
+
+        <div class="product-grid">
+          <div class="product-card">
+            <img src="image/21.png" alt="Onigiri 1">
+            <h3 class="product-title">Onigiri Nasi Kuning</h3>
+            <p class="product-price">Rp 12.000</p>
+          </div>
+          <div class="product-card">
+            <img src="image/22.png" alt="Onigiri 2">
+            <h3 class="product-title">Onigiri Nasi Uduk</h3>
+            <p class="product-price">Rp 12.000</p>
+          </div>
+          <div class="product-card">
+            <img src="image/23.png" alt="Onigiri 3">
+            <h3 class="product-title">Onigiri Nasi Liwet</h3>
+            <p class="product-price">Rp 12.000</p>
+          </div>
+          <div class="product-card">
+            <img src="image/24.png" alt="Onigiri 3">
+            <h3 class="product-title">Onigiri Nasi Daun Jeruk</h3>
+            <p class="product-price">Rp 12.000</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slider-container">
+      <div class="slider-track">
+        <div class="slide-item">🍙 <i>OnigiRich</i></div>
+        <div class="slide-item">🌍 <i>Rasa Lokal, Cita Global</i></div>
+        <div class="slide-item">🥗 <i>Onigiri Fresh Setiap Hari</i></div>
+        <div class="slide-item">✨ <i>Dibuat dengan Bahan Premium</i></div>
+        <div class="slide-item">☀️ <i>Pilihan Tepat Temani Harimu</i></div>
+        <div class="slide-item">🥢 <i>Praktis, Lezat, Mengenyangkan</i></div>
+        <div class="slide-item">🚫 <i>Tanpa Pengawet Buatan</i></div>
+        <div class="slide-item">🍱 <i>Cocok untuk Sarapan & Bekal</i></div>
+        <div class="slide-item">🍃 <i>Rasa Otentik, Kaya Nutrisi</i></div>
+        <div class="slide-item">🇮🇩 <i>Nikmati Onigiri Gaya Nusantara</i></div>
+      </div>
+    </div>
+
+    <!-- TENTANG -->
+    <div class="section" id="tentang" style="background-color: #fbfbfb;">
+      <h2 class="section-title">Tentang Kami</h2>
+      <p class="section-text">
+        OnigiRich lahir dari rasa cinta pada onigiri makanan khas Jepang yang kami beri sentuhan rasa lokal.
+        Kami percaya, makanan lezat tak harus rumit. Dari dapur kecil hingga ke tangan Anda, setiap OnigiRich
+        dibuat dengan bahan pilihan, higienis, dan penuh rasa. Misi kami sederhana yaitu menghadirkan makanan cepat saji
+        yang praktis, sehat, dan menggoda selera yang cocok untuk bekal, nyemil, atau teman kerja harian.
+        OnigiRich bukan sekadar camilan, tapi pengalaman rasa yang menyatukan tradisi dan inovasi dalam satu gigitan.
+      </p>
+    </div>
+
+    <!-- KONTAK -->
+    <div class="section" id="kontak">
+      <section class="kontak-section">
+        <div class="kontak-col">
+          <h2>Kontak Kami</h2>
+          <p>
+            Penasaran sama rasa lezat OnigiRich atau mau langsung pesan buat stok cemilan hari ini? Tenang, tim kami siap menyambut chat kamu di WhatsApp! Tanya-tanya boleh, order langsung juga boleh — karena ngobrol soal makanan enak memang nggak pernah salah.
+          </p>
+          <a class="wa-button" href="https://wa.me/6287836880545?text=Halo%20saya%20mau%20pesan%20OnigiRich%20dong"> Order? Klik disini !!!</a>
+        </div>
+        <div class="kontak-col">
+          <h2>Lokasi Kami</h2>
+          <p>Komplek Puri Indah Blok C3 No 26, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363</p>
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3070139965266!2d106.8501384!3d-6.2102582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3a3f96c7c0f%3A0xf9a96962cc3830a1!2sWarung%20OnigiRich!5e0!3m2!1sid!2sid!4v1714902780000!5m2!1sid!2sid" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js" integrity="sha512-UIVtWNEjzYaMV9IkNdqZBoXrAtBLH8kEwJ3tLMlNz+iEvmEN+n/8DNsTTT+tv3TSoPJJ6nQvKtcHHDBoMyxhjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    <!-- Script init -->
+      new fullpage('#fullpage', {
+        autoScrolling: true,
+        navigation: true,
+        navigationPosition: 'right',
+        anchors: ['home', 'produk', 'tentang', 'pesan'],
+        navigationTooltips: ['Home', 'Produk', 'Tentang', 'Pesan'],
+        showActiveTooltip: true,
+        scrollOverflow: true
+      });
+
+
+// Toggle nav for mobile
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+  </script>
+<!-- Tambahkan ini di akhir sebelum </body> -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new fullpage('#fullpage', {
+      autoScrolling: true,
+      scrollHorizontally: true,
+      navigation: true,
+      anchors: ['home', 'about', 'products', 'contact'],
+      afterRender: function () {
+        fullpage_api.setAutoScrolling(true);
+      }
+    });
+  });
+</script>
+
+
+
+</body>
+</html>
